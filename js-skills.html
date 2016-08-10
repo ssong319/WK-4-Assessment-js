@@ -318,7 +318,12 @@ $('.tricky-to-find').click(showAlert);
 
 <script>
   "use strict";
-  // put your code here
+  function showPorcupine() {
+    $('img#cute-porcupine-image').slideDown('slow', function() { $('img#cute-porcupine-image').attr('style', "display: inline-block") } );
+  }
+
+  $('#make-a-porcupine').on('click', function() { setTimeout(showPorcupine, 1000) });
+
 </script>
 
 <div class="hint">
@@ -355,14 +360,21 @@ $('.tricky-to-find').click(showAlert);
     What's your favorite food?
     <input type="text" name="favorite-food" required
            id="favorite-food-input">
-    <input type="submit" value="I'm Very Agreeable">
+    <input type="submit" id="agree-button" value="I'm Very Agreeable">
   </form>
   <div id="agreeable-text"></div>
 </fieldset>
 
 <script>
   "use strict";
-  // put your code here
+  function agreeWithUser(evt) {
+    evt.preventDefault();
+    var answer = $("#favorite-food-input").val();
+    $("#favorite-food-input").val('I like ' + answer + ' too');
+  }
+
+  $('#agree-button').on('click', agreeWithUser);
+
 </script>
 
 <div class="hint">
